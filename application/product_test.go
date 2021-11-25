@@ -22,18 +22,18 @@ func TestProduct_Enable(t *testing.T) {
 	require.Equal(t, "The price must be greater than zero to enable the product.", err.Error())
 }
 
-func TestProduct_Disabled(t *testing.T) {
+func TestProduct_Disable(t *testing.T) {
 	product := application.Product{}
 	product.Name = "Redmi Note 10"
 	product.Status = application.DISABLED
 	product.Price = 0
 
-	err := product.Disabled()
+	err := product.Disable()
 
 	require.Nil(t, err)
 
 	product.Price = 1299.90
-	err = product.Disabled()
+	err = product.Disable()
 	require.Equal(t, "Price must be zero in order to have the product disabled!", err.Error())
 }
 
